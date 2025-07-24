@@ -1,479 +1,445 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Ngopi</title>
+    <title>Yuk Ngopi!</title>
     <style>
-        /* --- BASE STYLES --- */
+        /* --- TEMPLATE DEFAULT --- */
         body {
             font-family: 'Nunito', sans-serif;
             margin: 0;
-            padding: 0;
+            background-color: #f9f5f3;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-color: #f9f5f3;
-            color: #4a5568;
-            transition: background-color 0.3s;
+            overflow: hidden;
         }
-        
+
         .invitation-container {
             background-color: #fff;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+            padding: 35px;
             text-align: center;
             max-width: 650px;
-            width: 90%;
-            margin: 30px auto;
-            position: relative;
-            overflow: hidden;
-            animation: fadeIn 0.8s ease-out;
+            animation: fadeIn 1s ease-out;
         }
-        
+
         @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(-20px); }
+            0% { opacity: 0; transform: translateY(-10px); }
             100% { opacity: 1; transform: translateY(0); }
         }
-        
+
         h1 {
-            color: #2b6cb0;
-            margin: 0 0 15px;
-            font-size: 2.8em;
+            color: #4a5568;
+            margin-bottom: 15px;
             font-family: 'Comfortaa', cursive;
+            font-size: 2.8em;
             animation: slideDownHeader 0.8s ease-out;
         }
-        
+
         @keyframes slideDownHeader {
             0% { transform: translateY(-30px); opacity: 0; }
             100% { transform: translateY(0); opacity: 1; }
         }
-        
+
         .recipient-name {
-            font-size: 1.8em;
+            font-size: 1.6em;
             color: #2b6cb0;
-            margin: 0 0 30px;
-            animation: pulse 1.5s infinite alternate;
-            font-weight: 700;
+            margin-bottom: 20px;
+            animation: pulse 1.2s infinite alternate;
         }
-        
+
         @keyframes pulse {
             0% { transform: scale(1); }
             100% { transform: scale(1.03); }
         }
-        
-        .invitation-text {
+
+        p {
             color: #718096;
-            line-height: 1.8;
+            line-height: 1.7;
             margin-bottom: 30px;
-            font-size: 1.1em;
             animation: fadeInUp 0.7s ease-in-out 0.3s forwards;
             opacity: 0;
         }
-        
+
         @keyframes fadeInUp {
             0% { transform: translateY(25px); opacity: 0; }
             100% { transform: translateY(0); opacity: 1; }
         }
-        
-        .details-container {
-            background-color: #f7fafc;
-            border-radius: 12px;
-            padding: 25px;
-            margin: 30px 0;
-            text-align: left;
+
+        .cafe-details {
+            margin-top: 30px;
+            color: #a0aec0;
             animation: slideInLeft 0.9s ease-out 0.5s forwards;
             opacity: 0;
         }
-        
+
         @keyframes slideInLeft {
             0% { transform: translateX(-40px); opacity: 0; }
             100% { transform: translateX(0); opacity: 1; }
         }
-        
-        .detail-item {
-            margin-bottom: 15px;
-            display: flex;
-        }
-        
-        .detail-label {
-            font-weight: 700;
+
+        .cafe-details strong {
             color: #4a5568;
-            min-width: 100px;
         }
-        
-        .detail-value {
-            color: #4a5568;
-            flex: 1;
-        }
-        
-        #countdown {
-            background: #2b6cb0;
-            color: white;
-            padding: 20px;
-            border-radius: 12px;
-            margin: 30px 0;
-            font-size: 1.3em;
-            font-weight: 700;
-            animation: scaleUp 1s ease-out 0.7s forwards;
-            opacity: 0;
-        }
-        
-        @keyframes scaleUp {
-            0% { transform: scale(0.9); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-        
+
         .rsvp-button {
             display: inline-block;
-            padding: 16px 45px;
-            background-color: #2b6cb0;
+            padding: 14px 35px;
+            background-color: #68d391;
             color: white;
             text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.2em;
-            margin: 20px 0 30px;
-            transition: transform 0.2s, background-color 0.2s;
-            animation: scaleUpButton 1s ease-out 0.9s forwards;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-top: 25px;
+            transition: background-color 0.3s ease;
+            animation: scaleUpButton 1s ease-out 0.7s forwards;
             opacity: 0;
-            cursor: pointer;
-            border: none;
-            box-shadow: 0 4px 10px rgba(43, 108, 176, 0.3);
         }
-        
+
         @keyframes scaleUpButton {
             0% { transform: scale(0.9); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
         }
-        
+
         .rsvp-button:hover {
-            background-color: #22548c;
-            transform: translateY(-3px);
+            background-color: #48bb78;
         }
-        
+
         footer {
             margin-top: 40px;
-            color: #a0aec0;
-            font-size: 1em;
-            animation: slideUpFooter 0.9s ease-out 1.1s forwards;
+            color: #cbd5e0;
+            font-size: 0.95em;
+            animation: slideUpFooter 0.9s ease-out 0.9s forwards;
             opacity: 0;
-            font-style: italic;
         }
-        
+
         @keyframes slideUpFooter {
             0% { transform: translateY(40px); opacity: 0; }
             100% { transform: translateY(0); opacity: 1; }
         }
-        
-        /* --- TEMPLATE STYLES --- */
-        body.minimalis {
-            background-color: #f8f9fa;
+
+        /* --- TEMPLATE 1: MINIMALIS --- */
+        .minimalis body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
         }
-        
-        body.minimalis .invitation-container {
+
+        .minimalis .invitation-container {
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
             padding: 30px;
             max-width: 550px;
         }
-        
-        body.minimalis h1 {
+
+        .minimalis h1 {
             color: #343a40;
             margin-bottom: 10px;
             font-size: 2.2em;
         }
-        
-        body.minimalis .recipient-name {
+
+        .minimalis .recipient-name {
             font-size: 1.4em;
             color: #007bff;
             margin-bottom: 15px;
         }
-        
-        body.minimalis .invitation-text {
+
+        .minimalis p {
             color: #495057;
             line-height: 1.6;
             margin-bottom: 20px;
         }
-        
-        body.minimalis .details-container {
-            background-color: #f1f5f9;
+
+        .minimalis .cafe-details {
+            margin-top: 25px;
+            color: #6c757d;
         }
-        
-        body.minimalis .rsvp-button {
-            padding: 12px 30px;
+
+        .minimalis .cafe-details strong {
+            color: #343a40;
+        }
+
+        .minimalis .rsvp-button {
+            padding: 10px 25px;
             background-color: #28a745;
             border-radius: 4px;
             font-weight: bold;
             font-size: 1em;
             margin-top: 15px;
-            box-shadow: 0 2px 5px rgba(40, 167, 69, 0.3);
         }
-        
-        body.minimalis .rsvp-button:hover {
+
+        .minimalis .rsvp-button:hover {
             background-color: #1e7e34;
         }
-        
-        body.minimalis footer {
+
+        .minimalis footer {
             margin-top: 30px;
             color: #adb5bd;
             font-size: 0.9em;
         }
-        
-        body.modern-gelap {
-            background-color: #222;
+
+        /* --- TEMPLATE 2: MODERN GELAP --- */
+        .modern-gelap body {
             font-family: 'Roboto', sans-serif;
+            background-color: #222;
         }
-        
-        body.modern-gelap .invitation-container {
+
+        .modern-gelap .invitation-container {
             background-color: #333;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
             padding: 35px;
             max-width: 600px;
         }
-        
-        body.modern-gelap h1 {
+
+        .modern-gelap h1 {
             color: #eee;
             margin-bottom: 15px;
             font-size: 2.5em;
         }
-        
-        body.modern-gelap .recipient-name {
+
+        .modern-gelap .recipient-name {
             font-size: 1.5em;
             color: #64b5f6;
             margin-bottom: 25px;
         }
-        
-        body.modern-gelap .invitation-text {
+
+        .modern-gelap p {
             color: #ddd;
             line-height: 1.7;
             margin-bottom: 30px;
         }
-        
-        body.modern-gelap .details-container {
-            background-color: #2d3748;
+
+        .modern-gelap .cafe-details {
+            margin-top: 35px;
+            color: #bbb;
         }
-        
-        body.modern-gelap .detail-label {
-            color: #a0aec0;
+
+        .modern-gelap .cafe-details strong {
+            color: #eee;
         }
-        
-        body.modern-gelap .detail-value {
-            color: #e2e8f0;
-        }
-        
-        body.modern-gelap .rsvp-button {
-            padding: 14px 35px;
+
+        .modern-gelap .rsvp-button {
+            padding: 12px 30px;
             background-color: #a1887f;
             border-radius: 5px;
             font-weight: bold;
             font-size: 1.1em;
             margin-top: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
-        
-        body.modern-gelap .rsvp-button:hover {
+
+        .modern-gelap .rsvp-button:hover {
             background-color: #795548;
         }
-        
-        body.modern-gelap footer {
+
+        .modern-gelap footer {
             margin-top: 45px;
             color: #888;
             font-size: 0.9em;
         }
-        
-        body.retro-vintage {
-            background-color: #fdf0d5;
+
+        /* --- TEMPLATE 3: RETRO VINTAGE --- */
+        .retro-vintage body {
             font-family: 'Courier New', Courier, monospace;
+            background-color: #fdf0d5;
         }
-        
-        body.retro-vintage .invitation-container {
+
+        .retro-vintage .invitation-container {
             background-color: #e6d7b3;
-            border: 3px dashed #8b4513;
+            border: 2px dashed #8b4513;
             border-radius: 10px;
             padding: 30px;
             max-width: 580px;
         }
-        
-        body.retro-vintage h1 {
+
+        .retro-vintage h1 {
             color: #a0522d;
             margin-bottom: 12px;
             font-size: 2.4em;
             font-family: 'Rockwell', serif;
         }
-        
-        body.retro-vintage .recipient-name {
+
+        .retro-vintage .recipient-name {
             font-size: 1.5em;
             color: #d2691e;
             margin-bottom: 20px;
         }
-        
-        body.retro-vintage .invitation-text {
+
+        .retro-vintage p {
             color: #654321;
             line-height: 1.8;
             margin-bottom: 25px;
         }
-        
-        body.retro-vintage .details-container {
-            background-color: #e2d4a9;
-            border: 1px solid #c0a080;
+
+        .retro-vintage .cafe-details {
+            margin-top: 30px;
+            color: #808080;
         }
-        
-        body.retro-vintage .rsvp-button {
-            padding: 12px 32px;
+
+        .retro-vintage .cafe-details strong {
+            color: #8b4513;
+        }
+
+        .retro-vintage .rsvp-button {
+            padding: 11px 28px;
             background-color: #b8860b;
             border-radius: 8px;
             font-weight: bold;
+        }
+        .retro-vintage .rsvp-button {
             font-size: 1.05em;
             margin-top: 20px;
-            box-shadow: 0 4px 8px rgba(184, 134, 11, 0.3);
         }
-        
-        body.retro-vintage .rsvp-button:hover {
+
+        .retro-vintage .rsvp-button:hover {
             background-color: #a0522d;
         }
-        
-        body.retro-vintage footer {
+
+        .retro-vintage footer {
             margin-top: 35px;
             color: #776e65;
             font-size: 0.85em;
         }
-        
-        body.cozy-natural {
-            background-color: #e9ecef;
+
+        /* --- TEMPLATE 4: COZY NATURAL --- */
+        .cozy-natural body {
             font-family: 'Open Sans', sans-serif;
+            background-color: #e9ecef;
         }
-        
-        body.cozy-natural .invitation-container {
+
+        .cozy-natural .invitation-container {
             background-color: #f8f9fa;
             border: 1px solid #dee2e6;
             border-radius: 10px;
             padding: 35px;
             max-width: 620px;
         }
-        
-        body.cozy-natural h1 {
+
+        .cozy-natural h1 {
             color: #27ae60;
             margin-bottom: 18px;
             font-size: 2.6em;
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
         }
-        
-        body.cozy-natural .recipient-name {
+
+        .cozy-natural .recipient-name {
             font-size: 1.55em;
             color: #8e44ad;
             margin-bottom: 22px;
         }
-        
-        body.cozy-natural .invitation-text {
+
+        .cozy-natural p {
             color: #555;
             line-height: 1.75;
             margin-bottom: 30px;
         }
-        
-        body.cozy-natural .details-container {
-            background-color: #edf2f7;
+
+        .cozy-natural .cafe-details {
+            margin-top: 40px;
+            color: #777;
         }
-        
-        body.cozy-natural .rsvp-button {
-            padding: 14px 36px;
+
+        .cozy-natural .cafe-details strong {
+            color: #333;
+        }
+
+        .cozy-natural .rsvp-button {
+            padding: 13px 32px;
             background-color: #f39c12;
             border-radius: 5px;
             font-weight: bold;
             font-size: 1.15em;
             margin-top: 25px;
-            box-shadow: 0 4px 10px rgba(243, 156, 18, 0.3);
         }
-        
-        body.cozy-natural .rsvp-button:hover {
+
+        .cozy-natural .rsvp-button:hover {
             background-color: #e67e22;
         }
-        
-        body.cozy-natural footer {
+
+        .cozy-natural footer {
             margin-top: 45px;
             color: #999;
             font-size: 0.95em;
         }
-        
-        body.vibrant-fun {
-            background-color: #ffebee;
+
+        /* --- TEMPLATE 5: VIBRANT FUN --- */
+        .vibrant-fun body {
             font-family: 'Quicksand', sans-serif;
+            background-color: #ffebee;
         }
-        
-        body.vibrant-fun .invitation-container {
+
+        .vibrant-fun .invitation-container {
             background-color: #fff;
             border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             padding: 40px;
             max-width: 590px;
         }
-        
-        body.vibrant-fun h1 {
+
+        .vibrant-fun h1 {
             color: #ff6f61;
             margin-bottom: 20px;
             font-size: 3em;
             font-family: 'Fredoka One', cursive;
-            text-shadow: 2px 2px 0 #f48fb1;
+            text-shadow: 2px 2px #f48fb1;
         }
-        
-        body.vibrant-fun .recipient-name {
+
+        .vibrant-fun .recipient-name {
             font-size: 1.7em;
             color: #9c27b0;
             margin-bottom: 25px;
-            animation: rainbow 4s infinite linear;
         }
-        
-        @keyframes rainbow {
-            0% { color: #ff6f61; }
-            25% { color: #9c27b0; }
-            50% { color: #4dd0e1; }
-            75% { color: #8e44ad; }
-            100% { color: #ff6f61; }
-        }
-        
-        body.vibrant-fun .invitation-text {
+
+        .vibrant-fun p {
             color: #6a1b9a;
             line-height: 1.8;
             margin-bottom: 35px;
         }
-        
-        body.vibrant-fun .details-container {
-            background: linear-gradient(135deg, #fce4ec, #f3e5f5);
+
+        .vibrant-fun .cafe-details {
+            margin-top: 40px;
+            color: #e91e63;
         }
-        
-        body.vibrant-fun .rsvp-button {
-            padding: 16px 42px;
+
+        .vibrant-fun .cafe-details strong {
+            color: #d81b60;
+        }
+
+        .vibrant-fun .rsvp-button {
+            padding: 15px 40px;
             background-color: #4dd0e1;
+            color: white;
+            text-decoration: none;
             border-radius: 10px;
             font-weight: bold;
             font-size: 1.2em;
             margin-top: 30px;
+            transition: background-color 0.3s ease;
             animation: tada 2s infinite;
-            box-shadow: 0 6px 12px rgba(77, 208, 225, 0.3);
         }
-        
-        @keyframes tada {
-            0% { transform: scale(1); }
-            10%, 20% { transform: scale(0.9) rotate(-3deg); }
-            30%, 50%, 70%, 90% { transform: scale(1.1) rotate(3deg); }
-            40%, 60%, 80% { transform: scale(1.1) rotate(-3deg); }
-            100% { transform: scale(1) rotate(0); }
-        }
-        
-        body.vibrant-fun .rsvp-button:hover {
+
+        .vibrant-fun .rsvp-button:hover {
             background-color: #00bcd4;
         }
-        
-        body.vibrant-fun footer {
+
+        .vibrant-fun footer {
             margin-top: 50px;
             color: #f06292;
             font-size: 1em;
+        }
+        /* --- Countdown Timer --- */
+        #countdown {
+            margin-top: 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #555;
+            text-align: center;
         }
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -484,104 +450,87 @@
 <body>
     <div class="invitation-container">
         <h1 id="headerText">Kopi Darat Yuk!</h1>
-        <p class="recipient-name" id="invitedName"></p>
-        <p class="invitation-text" id="invitationText">Gimana kalau kita ngopi santai di <span id="cafeName">Kopi Tenang</span>? Pengen ngobrolin banyak hal sambil menikmati kopi enak. Kamu ada waktu?</p>
-        
-        <div class="details-container">
-            <div class="detail-item">
-                <span class="detail-label">Lokasi:</span>
-                <span class="detail-value" id="cafeLocation">Jl. Damai No. 123, Jakarta</span>
-            </div>
-            <div class="detail-item">
-                <span class="detail-label">Hari & Tanggal:</span>
-                <span class="detail-value" id="coffeeDate">Sabtu, 1 Januari 2025</span>
-            </div>
-            <div class="detail-item">
-                <span class="detail-label">Waktu:</span>
-                <span class="detail-value" id="coffeeTime">18:00 - selesai</span>
-            </div>
+        <p class="recipient-name" id="invitedName">Hai, [Nama Teman]</p>
+        <p id="invitationText">Gimana kalau kita ngopi santai di <span id="cafeName">[Nama Cafe]</span>? Pengen ngobrolin banyak hal sambil menikmati kopi enak. Kamu ada waktu?</p>
+        <div class="cafe-details">
+            <strong>Lokasi:</strong> <span id="cafeLocation">[Alamat Cafe]</span><br>
+            <strong>Hari & Waktu:</strong> <span id="coffeeTime">[Hari], [Tanggal] pukul [Waktu]</span>
         </div>
-        
         <div id="countdown">
             Menghitung Waktu...
         </div>
-        
-        <button class="rsvp-button" onclick="alert('Sip! Sampai ketemu di sana ya!')">Aku Ikut!</button>
-        
+        <a href="#" class="rsvp-button" onclick="alert('Sip! Sampai ketemu di sana ya!')">Aku Ikut!</a>
         <footer id="footerText">Ditunggu ya!</footer>
     </div>
 
     <script>
-        // Get URL parameters
         function getQueryParam(name) {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(name);
         }
-        
-        // Format date to Indonesian
-        function formatDate(date) {
-            const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
-            const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
-            
-            const dayName = days[date.getDay()];
-            const dateNum = date.getDate();
-            const monthName = months[date.getMonth()];
-            const year = date.getFullYear();
-            
-            return `${dayName}, ${dateNum} ${monthName} ${year}`;
-        }
-        
-        // Format time to HH:MM
-        function formatTime(date) {
-            let hours = date.getHours();
-            let minutes = date.getMinutes();
-            minutes = minutes < 10 ? '0' + minutes : minutes;
-            return `${hours}:${minutes}`;
-        }
-        
-        // Load invitation data
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const invitedName = getQueryParam('nama');
+            if (invitedName) {
+                document.getElementById('invitedName').textContent = `Hai, ${invitedName}!`;
+            }
+            loadInvitationData();
+        });
+
         function loadInvitationData() {
             const storedData = localStorage.getItem('coffeeInvitationData');
+            const body = document.body;
+            const invitationContainer = document.querySelector('.invitation-container');
             const defaultData = {
                 header: 'Kopi Darat Yuk!',
                 invitation: 'Gimana kalau kita ngopi santai di [Nama Cafe]? Pengen ngobrolin banyak hal sambil menikmati kopi enak. Kamu ada waktu?',
-                cafe: 'Kopi Tenang',
-                location: 'Jl. Damai No. 123, Jakarta',
-                dateTime: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
+                cafe: '[Nama Cafe]',
+                location: '[Alamat Cafe]',
+                dateTime: '',
                 footer: 'Ditunggu ya!',
                 color: '#2b6cb0',
                 template: 'minimalis'
             };
-            
+
             let invitationData = storedData ? JSON.parse(storedData) : defaultData;
-            
-            // Update content
-            document.getElementById('headerText').textContent = invitationData.header;
-            document.getElementById('invitationText').textContent = invitationData.invitation;
-            document.getElementById('cafeName').textContent = invitationData.cafe;
-            document.getElementById('cafeLocation').textContent = invitationData.location;
-            document.getElementById('footerText').textContent = invitationData.footer;
-            
-            // Update date and time
-            let targetDate = null;
+
+            document.getElementById('headerText').textContent = invitationData.header || defaultData.header;
+            document.getElementById('invitationText').textContent = invitationData.invitation || defaultData.invitation;
+            document.getElementById('cafeName').textContent = invitationData.cafe || defaultData.cafe;
+            document.getElementById('cafeLocation').textContent = invitationData.location || defaultData.location;
+            document.getElementById('footerText').textContent = invitationData.footer || defaultData.footer;
+
+            // Format tanggal dan waktu dan atur targetDate
+            let targetDate;
             if (invitationData.dateTime) {
-                const date = new Date(invitationData.dateTime);
-                if (!isNaN(date.getTime())) {
-                    document.getElementById('coffeeDate').textContent = formatDate(date);
-                    document.getElementById('coffeeTime').textContent = formatTime(date) + ' - selesai';
-                    targetDate = date.getTime();
-                }
+                const dateTime = new Date(invitationData.dateTime);
+                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', timeZoneName: 'short' };
+                document.getElementById('coffeeTime').textContent = dateTime.toLocaleDateString('id-ID', options);
+                targetDate = dateTime.getTime();
+            } else {
+                document.getElementById('coffeeTime').textContent = defaultData.time;
+                const defaultTargetDate = new Date();
+                defaultTargetDate.setHours(20);
+                defaultTargetDate.setMinutes(0);
+                defaultTargetDate.setDate(defaultTargetDate.getDate() + 7);
+                targetDate = defaultTargetDate.getTime();
             }
-            
-            // Set template
-            document.body.className = invitationData.template || '';
-            
-            // Set colors
-            const primaryColor = invitationData.color;
+            if (targetDate) {
+                startCountdown(targetDate); // Panggil startCountdown setelah targetDate diatur
+            }
+
+            body.className = '';
+            invitationContainer.className = 'invitation-container';
+            const selectedTemplate = invitationData.template || defaultData.template;
+            if (selectedTemplate) {
+                body.classList.add(selectedTemplate);
+            }
+
+            const primaryColor = invitationData.color || defaultData.color;
             const h1Element = document.querySelector('h1');
             const rsvpButton = document.querySelector('.rsvp-button');
-            const countdownElement = document.getElementById('countdown');
-            
+            const recipientName = document.querySelector('.recipient-name');
+
             if (h1Element) h1Element.style.color = primaryColor;
             if (rsvpButton) {
                 rsvpButton.style.backgroundColor = primaryColor;
@@ -592,86 +541,41 @@
                     rsvpButton.style.backgroundColor = primaryColor;
                 });
             }
-            if (countdownElement) {
-                countdownElement.style.backgroundColor = primaryColor;
-            }
-            
-            // Start countdown if date is set
-            if (targetDate) {
-                startCountdown(targetDate);
-            } else {
-                document.getElementById('countdown').textContent = "Tanggal ngopi belum diatur";
-            }
+            if (recipientName) recipientName.style.color = shadeColor(primaryColor, -15);
         }
-        
-        // Generate shade of color
+
         function shadeColor(color, percent) {
-            let R = parseInt(color.substring(1, 3), 16);
-            let G = parseInt(color.substring(3, 5), 16);
-            let B = parseInt(color.substring(5, 7), 16);
-            
-            R = parseInt(R * (100 + percent) / 100);
-            G = parseInt(G * (100 + percent) / 100);
-            B = parseInt(B * (100 + percent) / 100);
-            
-            R = (R < 255) ? R : 255;
-            G = (G < 255) ? G : 255;
-            B = (B < 255) ? B : 255;
-            
-            R = Math.round(R);
-            G = Math.round(G);
-            B = Math.round(B);
-            
-            return `#${R.toString(16).padStart(2, '0')}${G.toString(16).padStart(2, '0')}${B.toString(16).padStart(2, '0')}`;
+            var f=parseInt(color.slice(1),16),t=percent<0?0:255,p=percent<0?percent*-1:percent,R=f>>16,G=f>>8&0x00FF,B=f&0x0000FF;
+            return "#"+(0x1000000+(Math.round((t-R)*p)+R)*0x10000+(Math.round((t-G)*p)+G)*0x100+(Math.round((t-B)*p)+B)).toString(16).slice(1);
         }
-        
-        // Countdown timer
+
         function startCountdown(targetTime) {
             const countdownElement = document.getElementById("countdown");
+
             const updateCountdown = () => {
                 const now = new Date().getTime();
                 const timeLeft = targetTime - now;
-                
+
                 if (timeLeft <= 0) {
-                    countdownElement.innerHTML = "Waktunya Ngopi!<br>Semoga kita bisa ketemu!";
+                    countdownElement.textContent = "Waktunya Ngopi!";
+                    clearInterval(countdownInterval);
                     return;
                 }
-                
+
                 const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-                
-                countdownElement.innerHTML = `
-                    <div style="font-size: 1.1em; margin-bottom: 8px;">Menuju Ngopi:</div>
-                    <div style="display: flex; justify-content: center; gap: 15px;">
-                        <div>${days}<span style="font-size: 0.7em;"> hari</span></div>
-                        <div>${hours}<span style="font-size: 0.7em;"> jam</span></div>
-                        <div>${minutes}<span style="font-size: 0.7em;"> menit</span></div>
-                        <div>${seconds}<span style="font-size: 0.7em;"> detik</span></div>
-                    </div>
-                `;
+
+                countdownElement.textContent = `Waktu menuju ngopi: ${days} hari, ${hours} jam, ${minutes} menit, ${seconds} detik`;
             };
-            
+
             updateCountdown();
             const countdownInterval = setInterval(updateCountdown, 1000);
         }
-        
-        // Initialize when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set invited name from URL parameter
-            const invitedName = getQueryParam('nama');
-            if (invitedName) {
-                document.getElementById('invitedName').textContent = `Hai, ${invitedName}!`;
-            }
-            
-            // Load invitation data
+
+        window.addEventListener('storage', () => {
             loadInvitationData();
-            
-            // Listen for storage updates
-            window.addEventListener('storage', () => {
-                loadInvitationData();
-            });
         });
     </script>
 </body>
