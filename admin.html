@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Undangan Ngopi</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+        }
+
+        .login-container, .admin-panel {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="color"],
+        input[type="date"],
+        input[type="time"],
+        select {
+            width: calc(100% - 12px);
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+
+        textarea {
+            width: calc(100% - 12px);
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 1em;
+            height: 80px;
+        }
+
+        button {
+            background-color: #2b6cb0;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        button:hover {
+            background-color: #22548c;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container" id="loginContainer">
+        <h2>Login Admin</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="userId">User ID:</label>
+                <input type="text" id="userId" name="userId" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Login</button>
+            <p id="loginError" style="color: red; margin-top: 10px; display: none;">Login gagal. Coba lagi.</p>
+        </form>
+    </div>
+
+    <div class="admin-panel hidden" id="adminPanel">
+        <h2>Pengaturan Undangan Ngopi</h2>
+        <form id="invitationForm">
+            <div class="form-group">
+                <label for="template">Pilih Template:</label>
+                <select id="template" name="template">
+                    <option value="minimalis">Minimalis</option>
+                    <option value="modern-gelap">Modern Gelap</option>
+                    <option value="retro-vintage">Retro Vintage</option>
+                    <option value="cozy-natural">Cozy Natural</option>
+                    <option value="vibrant-fun">Vibrant Fun</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="header">Header:</label>
+                <input type="text" id="header" name="header">
+            </div>
+            <div class="form-group">
+                <label for="invitation">Isi Undangan:</label>
+                <textarea id="invitation" name="invitation"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="cafe">Nama Cafe:</label>
+                <input type="text" id="cafe" name="cafe">
+            </div>
+            <div class="form-group">
+                <label for="location">Lokasi Cafe:</label>
+                <input type="text" id="location" name="location">
+            </div>
+            <div class="form-group">
+                <label for="coffeeDate">Tanggal Kopi:</label>
+                <input type="date" id="coffeeDate" name="coffeeDate">
+            </div>
+            <div class="form-group">
+                <label for="coffeeTime">Waktu Kopi:</label>
+                <input type="time" id="coffeeTime" name="coffeeTime">
+            </div>
+            <div class="form-group">
+                <label for="footer">Footer:</label>
+                <input type="text" id="footer" name="footer">
+            </div>
+            <div class="form-group">
+                <label for="color">Warna Utama:</label>
+                <input type="color" id="color" name="color" value="#2b6cb0">
+            </div>
+            <button type="button" onclick="updateInvitation()">Simpan Perubahan</button>
+            <p id="updateSuccess" style="color: green; margin-top: 10px; display: none;">Berhasil diperbarui!</p>
+            <p><br><strong>Link Undangan:</strong> <span id="invitationLink">invitation.html?nama=[Nama Teman]</span> (Ganti `[Nama Teman]` dengan nama yang diundang)</p>
+        </form>
+    </div>
+
+    <script>
+        const loginForm = document.getElementById('loginForm');
+        const loginContainer = document.getElementById('loginContainer');
+        const adminPanel = document.getElementById('adminPanel');
+        const loginError = document.getElementById('loginError');
+
+        const templateSelect = document.getElementById('template');
+        const headerInput = document.getElementById('header');
+        const invitationInput = document.getElementById('invitation');
+        const cafeInput = document.getElementById('cafe');
+        const locationInput = document.getElementById('location');
+        const coffeeDateInput = document.getElementById('coffeeDate');
+        const coffeeTimeInput = document.getElementById('coffeeTime');
+        const footerInput = document.getElementById('footer');
+        const colorInput = document.getElementById('color');
+        const updateSuccess = document.getElementById('updateSuccess');
+
+        const storedData = localStorage.getItem('coffeeInvitationData');
+        let coffeeInvitationData = storedData ? JSON.parse(storedData) : {
+            template: 'minimalis', // Default template
+            header: 'Kopi Darat Yuk!',
+            invitation: 'Gimana kalau kita ngopi santai di [Nama Cafe]? Pengen ngobrolin banyak hal sambil menikmati kopi enak. Kamu ada waktu?',
+            cafe: '[Nama Cafe]',
+            location: '[Alamat Cafe]',
+            dateTime: '', // Kita akan menyimpan tanggal dan waktu dalam satu field
+            footer: 'Ditunggu ya!',
+            color: '#2b6cb0'
+        };
+
+        // Daftar user lokal
+        const users = [
+            { id: 'admin1', password: 'pass1' },
+            { id: 'user2', password: 'pass2' },
+            { id: 'guest3', password: 'guest' }
+        ];
+
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const userId = document.getElementById('userId').value;
+            const password = document.getElementById('password').value;
+
+            const user = users.find(u => u.id === userId && u.password === password);
+
+            if (user) {
+                loginContainer.classList.add('hidden');
+                adminPanel.classList.remove('hidden');
+                loadInvitationData();
+            } else {
+                loginError.style.display = 'block';
+            }
+        });
+
+        function loadInvitationData() {
+            templateSelect.value = coffeeInvitationData.template;
+            headerInput.value = coffeeInvitationData.header;
+            invitationInput.value = coffeeInvitationData.invitation;
+            cafeInput.value = coffeeInvitationData.cafe;
+            locationInput.value = coffeeInvitationData.location;
+            footerInput.value = coffeeInvitationData.footer;
+            colorInput.value = coffeeInvitationData.color;
+
+            if (coffeeInvitationData.dateTime) {
+                const [datePart, timePart] = coffeeInvitationData.dateTime.split('T');
+                coffeeDateInput.value = datePart;
+                coffeeTimeInput.value = timePart ? timePart.substring(0, 5) : '';
+            }
+        }
+
+        function updateInvitation() {
+            coffeeInvitationData.template = templateSelect.value;
+            coffeeInvitationData.header = headerInput.value;
+            coffeeInvitationData.invitation = invitationInput.value;
+            coffeeInvitationData.cafe = cafeInput.value;
+            coffeeInvitationData.location = locationInput.value;
+            coffeeInvitationData.dateTime = coffeeDateInput.value + 'T' + coffeeTimeInput.value + ':00';
+            coffeeInvitationData.footer = footerInput.value;
+            coffeeInvitationData.color = colorInput.value;
+
+            localStorage.setItem('coffeeInvitationData', JSON.stringify(coffeeInvitationData));
+            updateSuccess.style.display = 'block';
+            setTimeout(() => {
+                updateSuccess.style.display = 'none';
+            }, 3000);
+
+            window.dispatchEvent(new Event('storage'));
+        }
+    </script>
+</body>
+</html>
