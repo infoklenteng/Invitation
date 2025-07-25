@@ -75,6 +75,7 @@
             color: #a0aec0;
             animation: slideInLeft 0.9s ease-out 0.5s forwards;
             opacity: 0;
+            line-height: 1.8; /* PERBAIKAN: Menambah spasi antar baris */
         }
 
         @keyframes slideInLeft {
@@ -122,318 +123,7 @@
             0% { transform: translateY(40px); opacity: 0; }
             100% { transform: translateY(0); opacity: 1; }
         }
-
-        /* --- TEMPLATE 1: MINIMALIS --- */
-        .minimalis body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f8f9fa;
-        }
-
-        .minimalis .invitation-container {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-            padding: 30px;
-            max-width: 550px;
-        }
-
-        .minimalis h1 {
-            color: #343a40;
-            margin-bottom: 10px;
-            font-size: 2.2em;
-        }
-
-        .minimalis .recipient-name {
-            font-size: 1.4em;
-            color: #007bff;
-            margin-bottom: 15px;
-        }
-
-        .minimalis p {
-            color: #495057;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .minimalis .cafe-details {
-            margin-top: 25px;
-            color: #6c757d;
-        }
-
-        .minimalis .cafe-details strong {
-            color: #343a40;
-        }
-
-        .minimalis .rsvp-button {
-            padding: 10px 25px;
-            background-color: #28a745;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 1em;
-            margin-top: 15px;
-        }
-
-        .minimalis .rsvp-button:hover {
-            background-color: #1e7e34;
-        }
-
-        .minimalis footer {
-            margin-top: 30px;
-            color: #adb5bd;
-            font-size: 0.9em;
-        }
-
-        /* --- TEMPLATE 2: MODERN GELAP --- */
-        .modern-gelap body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #222;
-        }
-
-        .modern-gelap .invitation-container {
-            background-color: #333;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-            padding: 35px;
-            max-width: 600px;
-        }
-
-        .modern-gelap h1 {
-            color: #eee;
-            margin-bottom: 15px;
-            font-size: 2.5em;
-        }
-
-        .modern-gelap .recipient-name {
-            font-size: 1.5em;
-            color: #64b5f6;
-            margin-bottom: 25px;
-        }
-
-        .modern-gelap p {
-            color: #ddd;
-            line-height: 1.7;
-            margin-bottom: 30px;
-        }
-
-        .modern-gelap .cafe-details {
-            margin-top: 35px;
-            color: #bbb;
-        }
-
-        .modern-gelap .cafe-details strong {
-            color: #eee;
-        }
-
-        .modern-gelap .rsvp-button {
-            padding: 12px 30px;
-            background-color: #a1887f;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 1.1em;
-            margin-top: 20px;
-        }
-
-        .modern-gelap .rsvp-button:hover {
-            background-color: #795548;
-        }
-
-        .modern-gelap footer {
-            margin-top: 45px;
-            color: #888;
-            font-size: 0.9em;
-        }
-
-        /* --- TEMPLATE 3: RETRO VINTAGE --- */
-        .retro-vintage body {
-            font-family: 'Courier New', Courier, monospace;
-            background-color: #fdf0d5;
-        }
-
-        .retro-vintage .invitation-container {
-            background-color: #e6d7b3;
-            border: 2px dashed #8b4513;
-            border-radius: 10px;
-            padding: 30px;
-            max-width: 580px;
-        }
-
-        .retro-vintage h1 {
-            color: #a0522d;
-            margin-bottom: 12px;
-            font-size: 2.4em;
-            font-family: 'Rockwell', serif;
-        }
-
-        .retro-vintage .recipient-name {
-            font-size: 1.5em;
-            color: #d2691e;
-            margin-bottom: 20px;
-        }
-
-        .retro-vintage p {
-            color: #654321;
-            line-height: 1.8;
-            margin-bottom: 25px;
-        }
-
-        .retro-vintage .cafe-details {
-            margin-top: 30px;
-            color: #808080;
-        }
-
-        .retro-vintage .cafe-details strong {
-            color: #8b4513;
-        }
-
-        .retro-vintage .rsvp-button {
-            padding: 11px 28px;
-            background-color: #b8860b;
-            border-radius: 8px;
-            font-weight: bold;
-        }
-        .retro-vintage .rsvp-button {
-            font-size: 1.05em;
-            margin-top: 20px;
-        }
-
-        .retro-vintage .rsvp-button:hover {
-            background-color: #a0522d;
-        }
-
-        .retro-vintage footer {
-            margin-top: 35px;
-            color: #776e65;
-            font-size: 0.85em;
-        }
-
-        /* --- TEMPLATE 4: COZY NATURAL --- */
-        .cozy-natural body {
-            font-family: 'Open Sans', sans-serif;
-            background-color: #e9ecef;
-        }
-
-        .cozy-natural .invitation-container {
-            background-color: #f8f9fa;
-            border: 1px solid #dee2e6;
-            border-radius: 10px;
-            padding: 35px;
-            max-width: 620px;
-        }
-
-        .cozy-natural h1 {
-            color: #27ae60;
-            margin-bottom: 18px;
-            font-size: 2.6em;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-        }
-
-        .cozy-natural .recipient-name {
-            font-size: 1.55em;
-            color: #8e44ad;
-            margin-bottom: 22px;
-        }
-
-        .cozy-natural p {
-            color: #555;
-            line-height: 1.75;
-            margin-bottom: 30px;
-        }
-
-        .cozy-natural .cafe-details {
-            margin-top: 40px;
-            color: #777;
-        }
-
-        .cozy-natural .cafe-details strong {
-            color: #333;
-        }
-
-        .cozy-natural .rsvp-button {
-            padding: 13px 32px;
-            background-color: #f39c12;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 1.15em;
-            margin-top: 25px;
-        }
-
-        .cozy-natural .rsvp-button:hover {
-            background-color: #e67e22;
-        }
-
-        .cozy-natural footer {
-            margin-top: 45px;
-            color: #999;
-            font-size: 0.95em;
-        }
-
-        /* --- TEMPLATE 5: VIBRANT FUN --- */
-        .vibrant-fun body {
-            font-family: 'Quicksand', sans-serif;
-            background-color: #ffebee;
-        }
-
-        .vibrant-fun .invitation-container {
-            background-color: #fff;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 40px;
-            max-width: 590px;
-        }
-
-        .vibrant-fun h1 {
-            color: #ff6f61;
-            margin-bottom: 20px;
-            font-size: 3em;
-            font-family: 'Fredoka One', cursive;
-            text-shadow: 2px 2px #f48fb1;
-        }
-
-        .vibrant-fun .recipient-name {
-            font-size: 1.7em;
-            color: #9c27b0;
-            margin-bottom: 25px;
-        }
-
-        .vibrant-fun p {
-            color: #6a1b9a;
-            line-height: 1.8;
-            margin-bottom: 35px;
-        }
-
-        .vibrant-fun .cafe-details {
-            margin-top: 40px;
-            color: #e91e63;
-        }
-
-        .vibrant-fun .cafe-details strong {
-            color: #d81b60;
-        }
-
-        .vibrant-fun .rsvp-button {
-            padding: 15px 40px;
-            background-color: #4dd0e1;
-            color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 1.2em;
-            margin-top: 30px;
-            transition: background-color 0.3s ease;
-            animation: tada 2s infinite;
-        }
-
-        .vibrant-fun .rsvp-button:hover {
-            background-color: #00bcd4;
-        }
-
-        .vibrant-fun footer {
-            margin-top: 50px;
-            color: #f06292;
-            font-size: 1em;
-        }
-        /* --- Countdown Timer --- */
+        
         #countdown {
             margin-top: 30px;
             font-size: 1.2em;
@@ -441,6 +131,118 @@
             color: #555;
             text-align: center;
         }
+
+        /* --- TEMPLATE 1: MINIMALIS --- */
+        .minimalis body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .minimalis .invitation-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            padding: 30px; max-width: 550px;
+        }
+        .minimalis h1 { color: #343a40; font-size: 2.2em; }
+        .minimalis .recipient-name { color: #2f4f4f; font-size: 1.4em; } /* PERBAIKAN: Warna diubah agar lebih kalem */
+        .minimalis p { color: #495057; }
+        .minimalis .cafe-details { color: #6c757d; }
+        .minimalis .cafe-details strong { color: #343a40; }
+        .minimalis .rsvp-button { background-color: #5a9a68; } /* PERBAIKAN: Warna tombol disesuaikan */
+        .minimalis .rsvp-button:hover { background-color: #44744f; }
+        .minimalis footer { color: #adb5bd; }
+
+        /* --- TEMPLATE 2: MODERN GELAP --- */
+        .modern-gelap body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to bottom, #333, #222); /* PERBAIKAN: Latar belakang gradien */
+        }
+        .modern-gelap .invitation-container {
+            background-color: #333;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            padding: 35px; max-width: 600px;
+        }
+        .modern-gelap h1 { color: #eee; font-size: 2.5em; }
+        .modern-gelap .recipient-name { color: #64b5f6; font-size: 1.5em; }
+        .modern-gelap p { color: #ddd; }
+        .modern-gelap .cafe-details { color: #bbb; }
+        .modern-gelap .cafe-details strong { color: #eee; }
+        .modern-gelap .rsvp-button { background-color: #a1887f; }
+        .modern-gelap .rsvp-button:hover { background-color: #795548; }
+        .modern-gelap footer { color: #888; }
+        .modern-gelap #countdown { color: #ccc; } /* PERBAIKAN: Warna countdown disesuaikan */
+
+        /* --- TEMPLATE 3: RETRO VINTAGE --- */
+        .retro-vintage body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #fdf0d5;
+        }
+        .retro-vintage .invitation-container {
+            background-color: #e6d7b3;
+            border: 2px dashed #8b4513;
+            padding: 30px; max-width: 580px;
+        }
+        .retro-vintage h1 {
+            color: #a0522d;
+            font-family: 'Rockwell', serif;
+            text-shadow: 1px 1px #d3c5a3; /* PERBAIKAN: Bayangan teks untuk efek vintage */
+        }
+        .retro-vintage .recipient-name { color: #8B0000; font-size: 1.5em; } /* PERBAIKAN: Warna lebih kontras */
+        .retro-vintage p { color: #654321; }
+        .retro-vintage .cafe-details { color: #808080; }
+        .retro-vintage .cafe-details strong { color: #8b4513; }
+        .retro-vintage .rsvp-button { background-color: #b8860b; }
+        .retro-vintage .rsvp-button:hover { background-color: #a0522d; }
+        .retro-vintage footer { color: #776e65; }
+
+        /* --- TEMPLATE 4: COZY NATURAL --- */
+        .cozy-natural body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #e9ecef;
+        }
+        .cozy-natural .invitation-container {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 35px; max-width: 620px;
+        }
+        .cozy-natural h1 { color: #27ae60; font-family: 'Montserrat', sans-serif; }
+        .cozy-natural .recipient-name { color: #8B4513; font-size: 1.55em; } /* PERBAIKAN: Warna ungu diganti coklat alami */
+        .cozy-natural p { color: #555; }
+        .cozy-natural .cafe-details { color: #777; }
+        .cozy-natural .cafe-details strong { color: #333; }
+        .cozy-natural .rsvp-button { background-color: #f39c12; }
+        .cozy-natural .rsvp-button:hover { background-color: #e67e22; }
+        .cozy-natural footer { color: #999; }
+        .cozy-natural #countdown { color: #555; }
+
+        /* --- TEMPLATE 5: VIBRANT FUN --- */
+        .vibrant-fun body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #ffebee;
+        }
+        .vibrant-fun .invitation-container {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 40px; max-width: 590px;
+        }
+        .vibrant-fun h1 {
+            color: #ff6f61;
+            font-family: 'Fredoka One', cursive;
+            text-shadow: 2px 2px #f48fb1;
+        }
+        .vibrant-fun .recipient-name { color: #9c27b0; font-size: 1.7em; }
+        .vibrant-fun p { color: #6a1b9a; }
+        .vibrant-fun .cafe-details { color: #e91e63; }
+        .vibrant-fun .cafe-details strong { color: #d81b60; }
+        .vibrant-fun .rsvp-button {
+            background-color: #4dd0e1;
+            animation: tada 2s infinite;
+        }
+        .vibrant-fun .rsvp-button:hover { background-color: #00bcd4; }
+        .vibrant-fun footer { color: #f06292; }
+
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -451,11 +253,14 @@
     <div class="invitation-container">
         <h1 id="headerText">Kopi Darat Yuk!</h1>
         <p class="recipient-name" id="invitedName">Hai, [Nama Teman]</p>
-        <p id="invitationText">Gimana kalau kita ngopi santai di <span id="cafeName">[Nama Cafe]</span>? Pengen ngobrolin banyak hal sambil menikmati kopi enak. Kamu ada waktu?</p>
+        <p id="invitationText">Pengen ngobrolin banyak hal sambil menikmati kopi enak. Kamu ada waktu?</p>
+        
         <div class="cafe-details">
+            <strong>Tempat:</strong> <span id="cafeName">[Nama Cafe]</span><br>
             <strong>Lokasi:</strong> <span id="cafeLocation">[Alamat Cafe]</span><br>
-            <strong>Hari & Waktu:</strong> <span id="coffeeTime">[Hari], [Tanggal] pukul [Waktu]</span>
+            <strong>Waktu:</strong> <span id="coffeeTime">[Hari], [Tanggal] pukul [Waktu]</span>
         </div>
+
         <div id="countdown">
             Menghitung Waktu...
         </div>
@@ -464,26 +269,32 @@
     </div>
 
     <script>
+        // Fungsi untuk mengambil parameter dari URL
         function getQueryParam(name) {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(name);
         }
 
+        // Fungsi untuk memuat data undangan saat halaman dibuka
         document.addEventListener('DOMContentLoaded', function() {
             const invitedName = getQueryParam('nama');
             if (invitedName) {
-                document.getElementById('invitedName').textContent = `Hai, ${invitedName}!`;
+                // Ganti placeholder nama dengan nama dari URL
+                document.getElementById('invitedName').textContent = `Hai, ${decodeURIComponent(invitedName)}!`;
             }
             loadInvitationData();
         });
 
+        // Fungsi utama untuk memuat data dari localStorage dan menampilkannya
         function loadInvitationData() {
             const storedData = localStorage.getItem('coffeeInvitationData');
             const body = document.body;
             const invitationContainer = document.querySelector('.invitation-container');
+            
+            // Data default jika tidak ada di localStorage
             const defaultData = {
                 header: 'Kopi Darat Yuk!',
-                invitation: 'Gimana kalau kita ngopi santai di [Nama Cafe]? Pengen ngobrolin banyak hal sambil menikmati kopi enak. Kamu ada waktu?',
+                invitation: 'Pengen ngobrolin banyak hal sambil menikmati kopi enak. Kamu ada waktu?',
                 cafe: '[Nama Cafe]',
                 location: '[Alamat Cafe]',
                 dateTime: '',
@@ -494,37 +305,38 @@
 
             let invitationData = storedData ? JSON.parse(storedData) : defaultData;
 
+            // PERBAIKAN: Mengisi setiap elemen dengan data yang sesuai
             document.getElementById('headerText').textContent = invitationData.header || defaultData.header;
             document.getElementById('invitationText').textContent = invitationData.invitation || defaultData.invitation;
             document.getElementById('cafeName').textContent = invitationData.cafe || defaultData.cafe;
             document.getElementById('cafeLocation').textContent = invitationData.location || defaultData.location;
             document.getElementById('footerText').textContent = invitationData.footer || defaultData.footer;
 
-            // Format tanggal dan waktu dan atur targetDate
             let targetDate;
             if (invitationData.dateTime) {
                 const dateTime = new Date(invitationData.dateTime);
-                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', timeZoneName: 'short' };
+                // Opsi format tanggal dan waktu dalam Bahasa Indonesia
+                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
                 document.getElementById('coffeeTime').textContent = dateTime.toLocaleDateString('id-ID', options);
                 targetDate = dateTime.getTime();
             } else {
-                document.getElementById('coffeeTime').textContent = defaultData.time;
-                const defaultTargetDate = new Date();
-                defaultTargetDate.setHours(20);
-                defaultTargetDate.setMinutes(0);
-                defaultTargetDate.setDate(defaultTargetDate.getDate() + 7);
-                targetDate = defaultTargetDate.getTime();
+                // Tampilkan placeholder jika tidak ada tanggal yang diatur
+                document.getElementById('coffeeTime').textContent = "[Hari], [Tanggal] pukul [Waktu]";
+                 // Sembunyikan countdown jika tidak ada tanggal
+                document.getElementById('countdown').style.display = 'none';
             }
+            
+            // Mulai countdown jika ada tanggal yang valid
             if (targetDate) {
-                startCountdown(targetDate); // Panggil startCountdown setelah targetDate diatur
+                document.getElementById('countdown').style.display = 'block';
+                startCountdown(targetDate);
             }
 
+            // Menerapkan template dan warna
             body.className = '';
             invitationContainer.className = 'invitation-container';
             const selectedTemplate = invitationData.template || defaultData.template;
-            if (selectedTemplate) {
-                body.classList.add(selectedTemplate);
-            }
+            body.classList.add(selectedTemplate);
 
             const primaryColor = invitationData.color || defaultData.color;
             const h1Element = document.querySelector('h1');
@@ -534,22 +346,22 @@
             if (h1Element) h1Element.style.color = primaryColor;
             if (rsvpButton) {
                 rsvpButton.style.backgroundColor = primaryColor;
-                rsvpButton.addEventListener('mouseover', () => {
-                    rsvpButton.style.backgroundColor = shadeColor(primaryColor, -20);
-                });
-                rsvpButton.addEventListener('mouseout', () => {
-                    rsvpButton.style.backgroundColor = primaryColor;
-                });
+                rsvpButton.addEventListener('mouseover', () => rsvpButton.style.backgroundColor = shadeColor(primaryColor, -20));
+                rsvpButton.addEventListener('mouseout', () => rsvpButton.style.backgroundColor = primaryColor);
             }
             if (recipientName) recipientName.style.color = shadeColor(primaryColor, -15);
         }
 
+        // Fungsi untuk menggelapkan/mencerahkan warna (utility)
         function shadeColor(color, percent) {
             var f=parseInt(color.slice(1),16),t=percent<0?0:255,p=percent<0?percent*-1:percent,R=f>>16,G=f>>8&0x00FF,B=f&0x0000FF;
             return "#"+(0x1000000+(Math.round((t-R)*p)+R)*0x10000+(Math.round((t-G)*p)+G)*0x100+(Math.round((t-B)*p)+B)).toString(16).slice(1);
         }
-
+        
+        let countdownInterval; // PERBAIKAN: Deklarasi interval di luar fungsi
+        // Fungsi untuk memulai hitung mundur
         function startCountdown(targetTime) {
+            clearInterval(countdownInterval); // Hentikan interval sebelumnya jika ada
             const countdownElement = document.getElementById("countdown");
 
             const updateCountdown = () => {
@@ -571,9 +383,10 @@
             };
 
             updateCountdown();
-            const countdownInterval = setInterval(updateCountdown, 1000);
+            countdownInterval = setInterval(updateCountdown, 1000);
         }
 
+        // Listener untuk memperbarui halaman jika ada perubahan di localStorage dari tab lain
         window.addEventListener('storage', () => {
             loadInvitationData();
         });
