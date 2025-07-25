@@ -11,7 +11,7 @@
             background-color: #f0f0f0;
         }
 
-        .login-container, .admin-panel {
+        .login-container, .admin-panel, .sender-panel {
             background-color: #fff;
             padding: 20px;
             border-radius: 8px;
@@ -50,7 +50,7 @@
             border-radius: 4px;
             box-sizing: border-box;
             font-size: 1em;
-            height: 80px;
+            height: 120px; /* Diperbesar agar muat banyak nomor */
         }
 
         button {
@@ -66,9 +66,31 @@
         button:hover {
             background-color: #22548c;
         }
+        
+        .whatsapp-button {
+            background-color: #25D366;
+        }
+        .whatsapp-button:hover {
+            background-color: #128C7E;
+        }
 
         .hidden {
             display: none;
+        }
+
+        #invitationList li {
+            list-style-type: none;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #invitationList a {
+            text-decoration: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
         }
     </style>
 </head>
@@ -90,7 +112,7 @@
     </div>
 
     <div class="admin-panel hidden" id="adminPanel">
-        <h2>Pengaturan Undangan Ngopi</h2>
+        <h2>1. Pengaturan Undangan Ngopi</h2>
         <form id="invitationForm">
             <div class="form-group">
                 <label for="template">Pilih Template:</label>
@@ -136,14 +158,33 @@
             </div>
             <button type="button" onclick="updateInvitation()">Simpan Perubahan</button>
             <p id="updateSuccess" style="color: green; margin-top: 10px; display: none;">Berhasil diperbarui!</p>
-            <p><br><strong>Link Undangan:</strong> <span id="invitationLink">invitation.html?nama=[Nama Teman]</span> (Ganti `[Nama Teman]` dengan nama yang diundang)</p>
         </form>
     </div>
 
+    <div class="sender-panel hidden" id="senderPanel">
+        <h2>2. Kirim Undangan via WhatsApp</h2>
+        <div class="form-group">
+            <label for="contactList">Daftar Kontak (Nama,NomorWA)</label>
+            <textarea id="contactList" placeholder="Contoh:&#10;Budi,6281234567890&#10;Ani,6285712345678"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="whatsappMessage">Pesan Pengantar di WhatsApp</label>
+            <textarea id="whatsappMessage">Assalamualaikum, [Nama]! Aku mau ngundang kamu buat ngopi bareng. Cek detail undangannya di link berikut ya:</textarea>
+        </div>
+        <button type="button" onclick="generateInvitationLinks()">Buat Link Undangan</button>
+        
+        <div id="invitationListContainer" style="margin-top: 20px;">
+            <ul id="invitationList"></ul>
+        </div>
+    </div>
+
+
     <script>
+        // --- [BAGIAN LOGIN DAN PENGATURAN UNDANGAN TIDAK BERUBAH] ---
         const loginForm = document.getElementById('loginForm');
         const loginContainer = document.getElementById('loginContainer');
         const adminPanel = document.getElementById('adminPanel');
+        const senderPanel = document.getElementById('senderPanel'); // Panel baru
         const loginError = document.getElementById('loginError');
 
         const templateSelect = document.getElementById('template');
@@ -159,17 +200,16 @@
 
         const storedData = localStorage.getItem('coffeeInvitationData');
         let coffeeInvitationData = storedData ? JSON.parse(storedData) : {
-            template: 'minimalis', // Default template
+            template: 'minimalis',
             header: 'Kopi Darat Yuk!',
             invitation: 'Gimana kalau kita ngopi santai di [Nama Cafe]? Pengen ngobrolin banyak hal sambil menikmati kopi enak. Kamu ada waktu?',
             cafe: '[Nama Cafe]',
             location: '[Alamat Cafe]',
-            dateTime: '', // Kita akan menyimpan tanggal dan waktu dalam satu field
+            dateTime: '',
             footer: 'Ditunggu ya!',
             color: '#2b6cb0'
         };
 
-        // Daftar user lokal
         const users = [
             { id: 'admin1', password: 'pass1' },
             { id: 'user2', password: 'pass2' },
@@ -180,12 +220,12 @@
             event.preventDefault();
             const userId = document.getElementById('userId').value;
             const password = document.getElementById('password').value;
-
             const user = users.find(u => u.id === userId && u.password === password);
 
             if (user) {
                 loginContainer.classList.add('hidden');
                 adminPanel.classList.remove('hidden');
+                senderPanel.classList.remove('hidden'); // Tampilkan panel pengirim
                 loadInvitationData();
             } else {
                 loginError.style.display = 'block';
@@ -200,7 +240,6 @@
             locationInput.value = coffeeInvitationData.location;
             footerInput.value = coffeeInvitationData.footer;
             colorInput.value = coffeeInvitationData.color;
-
             if (coffeeInvitationData.dateTime) {
                 const [datePart, timePart] = coffeeInvitationData.dateTime.split('T');
                 coffeeDateInput.value = datePart;
@@ -209,6 +248,7 @@
         }
 
         function updateInvitation() {
+            // Pastikan semua perubahan disimpan sebelum membuat link
             coffeeInvitationData.template = templateSelect.value;
             coffeeInvitationData.header = headerInput.value;
             coffeeInvitationData.invitation = invitationInput.value;
@@ -220,11 +260,53 @@
 
             localStorage.setItem('coffeeInvitationData', JSON.stringify(coffeeInvitationData));
             updateSuccess.style.display = 'block';
-            setTimeout(() => {
-                updateSuccess.style.display = 'none';
-            }, 3000);
-
+            setTimeout(() => { updateSuccess.style.display = 'none'; }, 3000);
             window.dispatchEvent(new Event('storage'));
+            alert("Pengaturan undangan telah disimpan! Sekarang Anda bisa membuat link di bawah.");
+        }
+
+        // --- FUNGSI BARU UNTUK MEMBUAT LINK WHATSAPP ---
+        function generateInvitationLinks() {
+            const contactList = document.getElementById('contactList').value.trim();
+            const invitationList = document.getElementById('invitationList');
+            const customMessage = document.getElementById('whatsappMessage').value;
+            
+            // Pastikan data undangan sudah disimpan
+            if (!localStorage.getItem('coffeeInvitationData')) {
+                alert("Harap simpan pengaturan undangan terlebih dahulu!");
+                return;
+            }
+
+            if (contactList === "") {
+                alert("Daftar kontak tidak boleh kosong.");
+                return;
+            }
+
+            invitationList.innerHTML = ''; // Kosongkan daftar sebelumnya
+            const contacts = contactList.split('\n');
+
+            contacts.forEach(contact => {
+                const [name, phone] = contact.split(',');
+                if (name && phone) {
+                    const trimmedName = name.trim();
+                    const trimmedPhone = phone.trim();
+
+                    // Membuat URL undangan yang dipersonalisasi
+                    const invitationUrl = `${window.location.origin}${window.location.pathname.replace('admin.html', 'index.html')}?nama=${encodeURIComponent(trimmedName)}`;
+
+                    // Membuat pesan WhatsApp
+                    const finalMessage = `${customMessage.replace('[Nama]', trimmedName)}\n\n${invitationUrl}`;
+                    const whatsappUrl = `https://api.whatsapp.com/send?phone=${trimmedPhone}&text=${encodeURIComponent(finalMessage)}`;
+
+                    // Menampilkan di daftar
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `
+                        <span>${trimmedName} (${trimmedPhone})</span>
+                        <a href="${whatsappUrl}" target="_blank" class="whatsapp-button">Kirim via WhatsApp</a>
+                    `;
+                    invitationList.appendChild(listItem);
+                }
+            });
         }
     </script>
 </body>
