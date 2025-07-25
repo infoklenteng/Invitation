@@ -75,7 +75,7 @@
             color: #a0aec0;
             animation: slideInLeft 0.9s ease-out 0.5s forwards;
             opacity: 0;
-            line-height: 1.8; /* PERBAIKAN: Menambah spasi antar baris */
+            line-height: 1.8;
         }
 
         @keyframes slideInLeft {
@@ -100,6 +100,7 @@
             transition: background-color 0.3s ease;
             animation: scaleUpButton 1s ease-out 0.7s forwards;
             opacity: 0;
+            cursor: pointer; /* Menambahkan cursor pointer */
         }
 
         @keyframes scaleUpButton {
@@ -132,37 +133,22 @@
             text-align: center;
         }
 
+        /* --- [CSS TEMPLATE LAINNYA TETAP SAMA] --- */
         /* --- TEMPLATE 1: MINIMALIS --- */
-        .minimalis body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f8f9fa;
-        }
-        .minimalis .invitation-container {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-            padding: 30px; max-width: 550px;
-        }
+        .minimalis body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8f9fa; }
+        .minimalis .invitation-container { background-color: #fff; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); padding: 30px; max-width: 550px; }
         .minimalis h1 { color: #343a40; font-size: 2.2em; }
-        .minimalis .recipient-name { color: #2f4f4f; font-size: 1.4em; } /* PERBAIKAN: Warna diubah agar lebih kalem */
+        .minimalis .recipient-name { color: #2f4f4f; font-size: 1.4em; }
         .minimalis p { color: #495057; }
         .minimalis .cafe-details { color: #6c757d; }
         .minimalis .cafe-details strong { color: #343a40; }
-        .minimalis .rsvp-button { background-color: #5a9a68; } /* PERBAIKAN: Warna tombol disesuaikan */
+        .minimalis .rsvp-button { background-color: #5a9a68; }
         .minimalis .rsvp-button:hover { background-color: #44744f; }
         .minimalis footer { color: #adb5bd; }
 
         /* --- TEMPLATE 2: MODERN GELAP --- */
-        .modern-gelap body {
-            font-family: 'Roboto', sans-serif;
-            background: linear-gradient(to bottom, #333, #222); /* PERBAIKAN: Latar belakang gradien */
-        }
-        .modern-gelap .invitation-container {
-            background-color: #333;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
-            padding: 30px; max-width: 550px;
-        }
+        .modern-gelap body { font-family: 'Roboto', sans-serif; background: linear-gradient(to bottom, #333, #222); }
+        .modern-gelap .invitation-container { background-color: #333; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.5); padding: 35px; max-width: 600px; }
         .modern-gelap h1 { color: #eee; font-size: 2.5em; }
         .modern-gelap .recipient-name { color: #64b5f6; font-size: 1.5em; }
         .modern-gelap p { color: #ddd; }
@@ -171,24 +157,13 @@
         .modern-gelap .rsvp-button { background-color: #a1887f; }
         .modern-gelap .rsvp-button:hover { background-color: #795548; }
         .modern-gelap footer { color: #888; }
-        .modern-gelap #countdown { color: #ccc; } /* PERBAIKAN: Warna countdown disesuaikan */
+        .modern-gelap #countdown { color: #ccc; }
 
         /* --- TEMPLATE 3: RETRO VINTAGE --- */
-        .retro-vintage body {
-            font-family: 'Courier New', Courier, monospace;
-            background-color: #fdf0d5;
-        }
-        .retro-vintage .invitation-container {
-            background-color: #e6d7b3;
-            border: 2px dashed #8b4513;
-            padding: 30px; max-width: 550px;
-        }
-        .retro-vintage h1 {
-            color: #a0522d;
-            font-family: 'Rockwell', serif;
-            text-shadow: 1px 1px #d3c5a3; /* PERBAIKAN: Bayangan teks untuk efek vintage */
-        }
-        .retro-vintage .recipient-name { color: #8B0000; font-size: 1.5em; } /* PERBAIKAN: Warna lebih kontras */
+        .retro-vintage body { font-family: 'Courier New', Courier, monospace; background-color: #fdf0d5; }
+        .retro-vintage .invitation-container { background-color: #e6d7b3; border: 2px dashed #8b4513; padding: 30px; max-width: 580px; }
+        .retro-vintage h1 { color: #a0522d; font-family: 'Rockwell', serif; text-shadow: 1px 1px #d3c5a3; }
+        .retro-vintage .recipient-name { color: #8B0000; font-size: 1.5em; }
         .retro-vintage p { color: #654321; }
         .retro-vintage .cafe-details { color: #808080; }
         .retro-vintage .cafe-details strong { color: #8b4513; }
@@ -197,17 +172,10 @@
         .retro-vintage footer { color: #776e65; }
 
         /* --- TEMPLATE 4: COZY NATURAL --- */
-        .cozy-natural body {
-            font-family: 'Open Sans', sans-serif;
-            background-color: #e9ecef;
-        }
-        .cozy-natural .invitation-container {
-            background-color: #f8f9fa;
-            border: 1px solid #dee2e6;
-            padding: 30px; max-width: 520px;
-        }
+        .cozy-natural body { font-family: 'Open Sans', sans-serif; background-color: #e9ecef; }
+        .cozy-natural .invitation-container { background-color: #f8f9fa; border: 1px solid #dee2e6; padding: 35px; max-width: 620px; }
         .cozy-natural h1 { color: #27ae60; font-family: 'Montserrat', sans-serif; }
-        .cozy-natural .recipient-name { color: #8B4513; font-size: 1.55em; } /* PERBAIKAN: Warna ungu diganti coklat alami */
+        .cozy-natural .recipient-name { color: #8B4513; font-size: 1.55em; }
         .cozy-natural p { color: #555; }
         .cozy-natural .cafe-details { color: #777; }
         .cozy-natural .cafe-details strong { color: #333; }
@@ -217,32 +185,16 @@
         .cozy-natural #countdown { color: #555; }
 
         /* --- TEMPLATE 5: VIBRANT FUN --- */
-        .vibrant-fun body {
-            font-family: 'Quicksand', sans-serif;
-            background-color: #ffebee;
-        }
-        .vibrant-fun .invitation-container {
-            background-color: #fff;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            padding: 30px; max-width: 550px;
-        }
-        .vibrant-fun h1 {
-            color: #ff6f61;
-            font-family: 'Fredoka One', cursive;
-            text-shadow: 2px 2px #f48fb1;
-        }
+        .vibrant-fun body { font-family: 'Quicksand', sans-serif; background-color: #ffebee; }
+        .vibrant-fun .invitation-container { background-color: #fff; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 40px; max-width: 590px; }
+        .vibrant-fun h1 { color: #ff6f61; font-family: 'Fredoka One', cursive; text-shadow: 2px 2px #f48fb1; }
         .vibrant-fun .recipient-name { color: #9c27b0; font-size: 1.7em; }
         .vibrant-fun p { color: #6a1b9a; }
         .vibrant-fun .cafe-details { color: #e91e63; }
         .vibrant-fun .cafe-details strong { color: #d81b60; }
-        .vibrant-fun .rsvp-button {
-            background-color: #4dd0e1;
-            animation: tada 2s infinite;
-        }
+        .vibrant-fun .rsvp-button { background-color: #4dd0e1; animation: tada 2s infinite; }
         .vibrant-fun .rsvp-button:hover { background-color: #00bcd4; }
         .vibrant-fun footer { color: #f06292; }
-
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -264,34 +216,30 @@
         <div id="countdown">
             Menghitung Waktu...
         </div>
-        <a href="#" class="rsvp-button" onclick="alert('Sip! Sampai ketemu di sana ya!')">Aku Ikut!</a>
+        <a class="rsvp-button" onclick="kirimKonfirmasiWhatsApp()">Aku Ikut!</a>
         <footer id="footerText">Ditunggu ya!</footer>
     </div>
 
     <script>
-        // Fungsi untuk mengambil parameter dari URL
+        // --- [FUNGSI getQueryParam, loadInvitationData, shadeColor, startCountdown TETAP SAMA] ---
         function getQueryParam(name) {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(name);
         }
 
-        // Fungsi untuk memuat data undangan saat halaman dibuka
         document.addEventListener('DOMContentLoaded', function() {
             const invitedName = getQueryParam('nama');
             if (invitedName) {
-                // Ganti placeholder nama dengan nama dari URL
                 document.getElementById('invitedName').textContent = `Hai, ${decodeURIComponent(invitedName)}!`;
             }
             loadInvitationData();
         });
 
-        // Fungsi utama untuk memuat data dari localStorage dan menampilkannya
         function loadInvitationData() {
             const storedData = localStorage.getItem('coffeeInvitationData');
             const body = document.body;
             const invitationContainer = document.querySelector('.invitation-container');
             
-            // Data default jika tidak ada di localStorage
             const defaultData = {
                 header: 'Kopi Darat Yuk!',
                 invitation: 'Pengen ngobrolin banyak hal sambil menikmati kopi enak. Kamu ada waktu?',
@@ -305,7 +253,6 @@
 
             let invitationData = storedData ? JSON.parse(storedData) : defaultData;
 
-            // PERBAIKAN: Mengisi setiap elemen dengan data yang sesuai
             document.getElementById('headerText').textContent = invitationData.header || defaultData.header;
             document.getElementById('invitationText').textContent = invitationData.invitation || defaultData.invitation;
             document.getElementById('cafeName').textContent = invitationData.cafe || defaultData.cafe;
@@ -315,24 +262,19 @@
             let targetDate;
             if (invitationData.dateTime) {
                 const dateTime = new Date(invitationData.dateTime);
-                // Opsi format tanggal dan waktu dalam Bahasa Indonesia
                 const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
                 document.getElementById('coffeeTime').textContent = dateTime.toLocaleDateString('id-ID', options);
                 targetDate = dateTime.getTime();
             } else {
-                // Tampilkan placeholder jika tidak ada tanggal yang diatur
                 document.getElementById('coffeeTime').textContent = "[Hari], [Tanggal] pukul [Waktu]";
-                 // Sembunyikan countdown jika tidak ada tanggal
                 document.getElementById('countdown').style.display = 'none';
             }
             
-            // Mulai countdown jika ada tanggal yang valid
             if (targetDate) {
                 document.getElementById('countdown').style.display = 'block';
                 startCountdown(targetDate);
             }
 
-            // Menerapkan template dan warna
             body.className = '';
             invitationContainer.className = 'invitation-container';
             const selectedTemplate = invitationData.template || defaultData.template;
@@ -352,16 +294,14 @@
             if (recipientName) recipientName.style.color = shadeColor(primaryColor, -15);
         }
 
-        // Fungsi untuk menggelapkan/mencerahkan warna (utility)
         function shadeColor(color, percent) {
             var f=parseInt(color.slice(1),16),t=percent<0?0:255,p=percent<0?percent*-1:percent,R=f>>16,G=f>>8&0x00FF,B=f&0x0000FF;
             return "#"+(0x1000000+(Math.round((t-R)*p)+R)*0x10000+(Math.round((t-G)*p)+G)*0x100+(Math.round((t-B)*p)+B)).toString(16).slice(1);
         }
         
-        let countdownInterval; // PERBAIKAN: Deklarasi interval di luar fungsi
-        // Fungsi untuk memulai hitung mundur
+        let countdownInterval;
         function startCountdown(targetTime) {
-            clearInterval(countdownInterval); // Hentikan interval sebelumnya jika ada
+            clearInterval(countdownInterval);
             const countdownElement = document.getElementById("countdown");
 
             const updateCountdown = () => {
@@ -385,8 +325,27 @@
             updateCountdown();
             countdownInterval = setInterval(updateCountdown, 1000);
         }
+        
+        // FUNGSI BARU: Untuk mengirim konfirmasi via WhatsApp
+        function kirimKonfirmasiWhatsApp() {
+            // !!! PENTING: Ganti dengan nomor WhatsApp Anda (gunakan format 628xxxx)
+            const nomorAdmin = '628170000889'; 
 
-        // Listener untuk memperbarui halaman jika ada perubahan di localStorage dari tab lain
+            // Mengambil data dari halaman
+            const namaTamu = getQueryParam('nama') || 'Teman';
+            const namaKafe = document.getElementById('cafeName').textContent;
+            const waktuKopi = document.getElementById('coffeeTime').textContent;
+
+            // Membuat template pesan
+            const pesan = `Halo! Saya, *${namaTamu}*, mengonfirmasi akan hadir di acara ngopi.\n\n*Tempat:* ${namaKafe}\n*Waktu:* ${waktuKopi}\n\nTerima kasih atas undangannya!`;
+
+            // Membuat URL WhatsApp
+            const urlWhatsApp = `https://api.whatsapp.com/send?phone=${nomorAdmin}&text=${encodeURIComponent(pesan)}`;
+
+            // Membuka WhatsApp di tab baru
+            window.open(urlWhatsApp, '_blank');
+        }
+
         window.addEventListener('storage', () => {
             loadInvitationData();
         });
